@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aline de Matos Valerio, Ph.D. | Aquatic remote sensing</title>
+<meta name="description" content="Aline de Matos Valerio is an aquatic scientist who uses satellite remote sensing and field measurements to study how lakes, reservoirs, rivers and coastal waters change. Postdoctoral Associate, Indiana University Bloomington.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F6F8F7;
+    --ink: #13272E;
+    --muted: #55666B;
+    --rule: #D5DEDC;
+    --link: #1D5E78;
+    /* optical water types: clear blue to turbid brown */
+    --w1: #1F4E79;
+    --w2: #2F7F8F;
+    --w3: #4E8F5A;
+    --w4: #8C8A3E;
+    --w5: #A8763E;
+    --w6: #7A5233;
+    --serif: "Spectral", Georgia, serif;
+    --sans: "Public Sans", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  a { color: var(--link); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  a:hover { text-decoration-thickness: 2px; }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--w2); outline-offset: 3px; border-radius: 2px; }
+
+  .spectrum {
+    height: 10px;
+    background: linear-gradient(90deg, var(--w1), var(--w2), var(--w3), var(--w4), var(--w5), var(--w6));
+  }
+
+  .layout {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 28px;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 64px;
+  }
+
+  /* sidebar */
+  .side {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    padding: 40px 0 24px;
+  }
+  .side img {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+  }
+  .side .who { margin: 16px 0 4px; font-family: var(--serif); font-size: 1.25rem; font-weight: 600; line-height: 1.25; }
+  .side .role { margin: 0; color: var(--muted); font-size: 0.9rem; line-height: 1.45; }
+  .side nav ul, .side .links { list-style: none; padding: 0; margin: 20px 0 0; }
+  .side nav li { margin: 0; }
+  .side nav a {
+    display: block;
+    padding: 5px 0 5px 12px;
+    border-left: 2px solid var(--rule);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+  .side nav a:hover { border-left-color: var(--w2); }
+  .side nav a.active { border-left-color: var(--w1); font-weight: 600; }
+  .side .links { margin-top: 18px; font-size: 0.9rem; }
+  .side .links li { margin: 4px 0; }
+
+  /* main */
+  main { padding: 48px 0 96px; min-width: 0; }
+  section { padding-top: 56px; }
+  section:first-child { padding-top: 0; }
+
+  .intro h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(2.2rem, 4.6vw, 3.4rem);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    margin: 8px 0 24px;
+    max-width: 16ch;
+  }
+  .intro .lede {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    line-height: 1.55;
+    max-width: 36em;
+    margin: 0 0 20px;
+  }
+  .intro p { max-width: 38em; }
+
+  h2 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.75rem;
+    line-height: 1.2;
+    margin: 0 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+  }
+  h3 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 1.3;
+    margin: 0 0 6px;
+  }
+  p { margin: 0 0 14px; }
+
+  /* research themes keyed to water color */
+  .themes { display: grid; gap: 28px; margin-top: 8px; }
+  .theme {
+    padding-left: 20px;
+    border-left: 6px solid var(--c);
+    max-width: 40em;
+  }
+  .theme .where { color: var(--muted); font-size: 0.9rem; margin-bottom: 8px; }
+  .theme p:last-child { margin-bottom: 0; }
+
+  /* publications */
+  .pubnote { color: var(--muted); font-size: 0.95rem; }
+  ol.pubs { list-style: none; padding: 0; margin: 0; counter-reset: pub 18; }
+  ol.pubs li {
+    counter-increment: pub -1;
+    position: relative;
+    padding: 12px 0 12px 44px;
+    border-bottom: 1px solid var(--rule);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    max-width: 46em;
+  }
+  ol.pubs li::before {
+    content: counter(pub);
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 30px;
+    text-align: right;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  ol.pubs .t { font-family: var(--serif); font-size: 1.05rem; display: block; margin: 2px 0; }
+  ol.pubs .j { font-style: italic; }
+  ol.pubs b { font-weight: 600; }
+  .yr { color: var(--muted); }
+  h3.sub { margin-top: 32px; font-size: 1.1rem; }
+
+  /* simple dated lists */
+  dl.dated { display: grid; grid-template-columns: 6.5rem 1fr; gap: 10px 20px; margin: 0 0 8px; max-width: 46em; }
+  dl.dated dt { color: var(--muted); font-variant-numeric: tabular-nums; }
+  dl.dated dd { margin: 0; }
+
+  .tools { display: grid; gap: 22px; max-width: 42em; }
+  .tools p { margin-bottom: 0; }
+
+  .contact p { max-width: 38em; }
+  footer { color: var(--muted); font-size: 0.85rem; padding-top: 64px; }
+
+  @media (max-width: 860px) {
+    .layout { grid-template-columns: 1fr; gap: 0; }
+    .side {
+      position: static;
+      padding: 32px 0 0;
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 0 20px;
+      align-items: center;
+    }
+    .side img { max-width: 120px; }
+    .side .who { margin-top: 0; }
+    .side nav, .side .links { grid-column: 1 / -1; }
+    .side nav ul { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 24px; }
+    .side nav a { border-left: none; padding: 4px 0; border-bottom: 2px solid transparent; }
+    .side nav a.active { border-bottom-color: var(--w1); }
+    .side .links { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 12px; }
+    main { padding-top: 40px; }
+    dl.dated { grid-template-columns: 1fr; gap: 0; }
+    dl.dated dd { margin-bottom: 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="spectrum" role="presentation"></div>
+
+<div class="layout">
+  <aside class="side">
+    <img src="assets/aline-valerio.jpg" alt="Aline de Matos Valerio at a reservoir in Brazil" width="480" height="600">
+    <div>
+      <p class="who">Aline de Matos Valerio, Ph.D.</p>
+      <p class="role">Postdoctoral Associate<br>O’Neill School of Public and Environmental Affairs, Indiana University Bloomington</p>
+    </div>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#data">Data and tools</a></li>
+        <li><a href="#teaching">Teaching and mentoring</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <ul class="links">
+      <li><a href="assets/Valerio_CV.pdf">CV (PDF)</a></li>
+      <li><a href="https://scholar.google.com/citations?user=yqwg1e8AAAAJ">Google Scholar</a></li>
+      <li><a href="https://orcid.org/0000-0002-4742-771X">ORCID</a></li>
+      <li><a href="https://ecslab.org">ECS Lab</a></li>
+    </ul>
+  </aside>
+
+  <main>
+    <section id="about" class="intro">
+      <h1>Reading the color of water from space</h1>
+      <p class="lede">I am an aquatic scientist. I combine satellite remote sensing with field measurements to understand how lakes, reservoirs, rivers and coastal waters change, and what drives that change.</p>
+      <p>I am a Postdoctoral Associate in the Environmental Change &amp; Sustainability Lab at Indiana University Bloomington, where I study how solar panels installed on water affect the lakes and reservoirs that host them. Before Indiana, I was a FAPESP postdoctoral fellow at the University of São Paulo, using water color to estimate carbon in the Amazon River, from the river to its ocean plume.</p>
+      <p>I trained as a biologist and earned my M.Sc. and Ph.D. in Remote Sensing at Brazil’s National Institute for Space Research (INPE). Much of my work starts in the field: eight campaigns on the lower Amazon River, monthly sampling at a coastal time-series station, oceanographic cruises along the Brazilian coast, and reservoir surveys. Satellite signals from water are easy to get and easy to misread, and field data is how I keep them honest.</p>
+    </section>
+
+    <section id="research">
+      <h2>Research</h2>
+      <div class="themes">
+        <div class="theme" style="--c: var(--w1)">
+          <h3>Solar panels on water</h3>
+          <p class="where">Global, 2025 to present</p>
+          <p>Solar panels are being installed on lakes, reservoirs and ponds worldwide, but no inventory resolved individual installations, and single-site studies disagree about their effects. I built a global inventory of 3,277 aquatic photovoltaic installations on 2,545 host water bodies in 36 countries. Most of these water bodies are small, artificial and missing from global lake databases. I use the inventory with a decade of Landsat and Sentinel-2 imagery to compare each lake before and after installation against nearby lakes without panels, measuring changes in water temperature and algae.</p>
+        </div>
+        <div class="theme" style="--c: var(--w5)">
+          <h3>Carbon and color in the Amazon River Continuum</h3>
+          <p class="where">Lower Amazon River to the Atlantic plume, 2014 to 2024</p>
+          <p>The Amazon carries carbon from land to the atmosphere and the ocean. I use the optical properties of dissolved organic matter, measured in the field and from satellites such as Sentinel-3 OLCI and PACE OCI, to estimate dissolved carbon, CO₂ partial pressure and chlorophyll-a along the river and its plume. This work includes classifying the river’s optical water types and testing atmospheric correction methods for its turbid waters.</p>
+        </div>
+        <div class="theme" style="--c: var(--w3)">
+          <h3>Bio-optics of reservoirs and coastal waters</h3>
+          <p class="where">Brazil and Chile, 2007 to 2024</p>
+          <p>My earliest work characterized the optical behaviour of Manso Reservoir in central Brazil. Since then I have worked on the bio-optical properties of coastal waters in southeastern Brazil and northern Patagonia, and contributed to BRAZA, an open bio-optical database for Brazilian coastal and inland waters.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <h2>Publications</h2>
+      <p class="pubnote">Peer-reviewed journal articles, newest first. Full list with book chapters in my <a href="assets/Valerio_CV.pdf">CV</a> and on <a href="https://scholar.google.com/citations?user=yqwg1e8AAAAJ">Google Scholar</a>.</p>
+      <ol class="pubs">
+        <li><b>Valerio, A.M.</b>, Kampel, M., Vantrepotte, V., Ward, N.D., Almeida, R.M., Richey, J.E. <span class="yr">(2026)</span>
+          <a class="t" href="https://doi.org/10.1080/01431161.2026.2720314">Remotely sensed colored dissolved organic matter distribution in the Amazon River Continuum</a>
+          <span class="j">International Journal of Remote Sensing</span></li>
+        <li>Pacheco, F., Heilpern, S.A., Almeida, R.M., Sethi, S., … <b>Valerio, A.M.</b>, Flecker, A.S. <span class="yr">(2026)</span>
+          <a class="t" href="https://doi.org/10.1126/sciadv.aec5472">Land use transitions and carbon emissions of aquaculture expansion in the Brazilian Amazon</a>
+          <span class="j">Science Advances</span>, 12, eaec5472</li>
+        <li><b>Valerio, A.M.</b>, Montanari, J.L., Kampel, M., Ward, N.D., Richey, J.E., Cunha, A.C. <span class="yr">(2025)</span>
+          <a class="t" href="https://doi.org/10.1080/01431161.2025.2596811">Chlorophyll-a dynamics in the Lower Amazon River: insights from in situ and hyperspectral remote sensing using OCI-PACE</a>
+          <span class="j">International Journal of Remote Sensing</span></li>
+        <li>Maciel, D.A., Barbosa, C.C.F., de Moraes Novo, E.M.L., … <b>Valerio, A.M.</b>, et al. <span class="yr">(2025)</span>
+          <a class="t" href="https://doi.org/10.1038/s41597-025-05609-1">A bio-optical database for the remote sensing of water quality in BRAZil coAstal and inland waters (BRAZA)</a>
+          <span class="j">Scientific Data</span>, 12, 1270</li>
+        <li><b>Valerio, A.M.</b>, Kampel, M., Vantrepotte, V., Ballester, V., Richey, J.E. <span class="yr">(2024)</span>
+          <a class="t" href="https://doi.org/10.3390/rs16142663">Assessment of atmospheric correction algorithms for Sentinel-3 OLCI in the Amazon River Continuum</a>
+          <span class="j">Remote Sensing</span>, 16(14), 2663</li>
+        <li>Curra-Sánchez, E.D., <b>Valerio, A.M.</b>, Lara, C., García-Tuñon, W., Broitman, B.R., Saldías, G.S., … Vargas, C.A. <span class="yr">(2024)</span>
+          <a class="t" href="https://doi.org/10.1016/j.ecss.2024.108897">CDOM dynamics in two coastal zones influenced by contrasting land uses in northern Patagonia</a>
+          <span class="j">Estuarine, Coastal and Shelf Science</span>, 306, 108897</li>
+        <li>Moreira, D.L., Dalto, A.G., Figueiredo, A.G., <b>Valerio, A.M.</b>, Detoni, A.M.S., Bonecker, A.C.T., … Sousa, S.H.M. <span class="yr">(2023)</span>
+          <a class="t" href="https://doi.org/10.1590/2675-2824071.22072dlm">Multidisciplinary scientific cruises for environmental characterization in the Santos Basin: methods and sampling design</a>
+          <span class="j">Ocean and Coastal Research</span>, 71(suppl. 3), e23022</li>
+        <li>Cesar, G.M., Rudorff, N.M., Oliveira, A.L., <b>Valerio, A.M.</b>, Chuqui, M.G., Pompeu, M., … Kampel, M. <span class="yr">(2023)</span>
+          <a class="t" href="https://doi.org/10.1080/01431161.2023.2201385">Bio-optical properties of South Brazil Bight coastal waters and implications for satellite chlorophyll-a concentration retrieval</a>
+          <span class="j">International Journal of Remote Sensing</span>, 44(7), 2428–2457</li>
+        <li><b>Valerio, A.M.</b>, Kampel, M., Ward, N.D., Sawakuchi, H.O., Cunha, A.C., Richey, J.E. <span class="yr">(2021)</span>
+          <a class="t" href="https://doi.org/10.1016/j.csr.2021.104348">CO₂ partial pressure and fluxes in the Amazon River plume using in situ and remote sensing data</a>
+          <span class="j">Continental Shelf Research</span>, 215, 104348</li>
+        <li><b>Valerio, A.M.</b>, Kampel, M., Vantrepotte, V., Ward, N.D., Richey, J.E. <span class="yr">(2021)</span>
+          <a class="t" href="https://doi.org/10.3390/rs13163057">Optical classification of lower Amazon waters based on in situ data and Sentinel-3 Ocean and Land Color Instrument imagery</a>
+          <span class="j">Remote Sensing</span>, 13(16), 3057</li>
+        <li>Kuhn, C., <b>Valerio, A.M.</b>, Ward, N., Loken, L., Sawakuchi, H.O., Kampel, M., … Butman, D. <span class="yr">(2019)</span>
+          <a class="t" href="https://doi.org/10.1016/j.rse.2019.01.023">Performance of Landsat-8 and Sentinel-2 surface reflectance products for river remote sensing retrievals of chlorophyll-a and turbidity</a>
+          <span class="j">Remote Sensing of Environment</span>, 224, 104–118</li>
+        <li><b>Valerio, A.M.</b>, Kampel, M., Vantrepotte, V., Ward, N.D., Sawakuchi, H.O., Less, D.F.D.S., … Richey, J.E. <span class="yr">(2018)</span>
+          <a class="t" href="https://doi.org/10.1364/oe.26.00a657">Using CDOM optical properties for estimating DOC concentrations and pCO₂ in the Lower Amazon River</a>
+          <span class="j">Optics Express</span>, 26(14), A657–A677</li>
+        <li>Ward, N.D., Sawakuchi, H.O., Neu, V., Less, D.F.S., <b>Valerio, A.M.</b>, Cunha, A.C., … Keil, R.G. <span class="yr">(2018)</span>
+          <a class="t" href="https://doi.org/10.1002/lol2.10062">Velocity-amplified microbial respiration rates in the lower Amazon River</a>
+          <span class="j">Limnology and Oceanography Letters</span>, 3(3), 265–274</li>
+        <li>Sawakuchi, H.O., Neu, V., Ward, N.D., Barros, M.L.C., <b>Valerio, A.M.</b>, Gagne-Maynard, W., … Richey, J.E. <span class="yr">(2017)</span>
+          <a class="t" href="https://doi.org/10.3389/fmars.2017.00076">Carbon dioxide emissions along the lower Amazon River</a>
+          <span class="j">Frontiers in Marine Science</span>, 4, 76</li>
+        <li>Gagne-Maynard, W.C., Ward, N.D., Keil, R.G., Sawakuchi, H.O., Da Cunha, A.C., Neu, V., … <b>Valerio, A.M.</b>, Kampel, M., Krusche, A.V., Richey, J.E. <span class="yr">(2017)</span>
+          <a class="t" href="https://doi.org/10.3389/fmars.2017.00026">Evaluation of primary production in the lower Amazon River based on a dissolved oxygen stable isotopic mass balance</a>
+          <span class="j">Frontiers in Marine Science</span>, 4, 26</li>
+        <li>Ward, N.D., Bianchi, T.S., Sawakuchi, H.O., Gagne-Maynard, W., Cunha, A.C., Brito, D.C., Neu, V., <b>Valerio, A.M.</b>, Silva, R., Krusche, A.V., Richey, J.E., Keil, R.G. <span class="yr">(2016)</span>
+          <a class="t" href="https://doi.org/10.1002/2016JG003342">The reactivity of plant-derived organic matter and the potential importance of priming effects along the lower Amazon River</a>
+          <span class="j">Journal of Geophysical Research: Biogeosciences</span>, 121(6), 1522–1539</li>
+        <li><b>Valerio, A.M.</b>, Kampel, M., Assireu, A.T., Stech, J.L. <span class="yr">(2012)</span>
+          <a class="t" href="https://doi.org/10.1016/j.ecoinf.2011.12.003">The asymmetric fragmentation operator applied to meteo-limnological time series in a tropical reservoir</a>
+          <span class="j">Ecological Informatics</span>, 8, 29–36</li>
+      </ol>
+    </section>
+
+    <section id="data">
+      <h2>Data and tools</h2>
+      <div class="tools">
+        <div>
+          <h3>AqPV global inventory</h3>
+          <p>A geospatial database of 3,277 aquatic photovoltaic installations on 2,545 host water bodies in 36 countries, each mapped individually, with installation dates and attributes of the structure and its host water body. Public release with the accompanying data paper (in preparation for <i>Scientific Data</i>).</p>
+        </div>
+        <div>
+          <h3>AqPV web tool</h3>
+          <p>An interactive platform to explore aquatic solar installations and the water-quality and temperature indices of their host lakes. Built by Freny Reji, an M.S. student I co-mentored at Indiana University. <a href="https://fpv-aquaticsolar.webapps.iu.edu/">Open the web tool</a>.</p>
+        </div>
+        <div>
+          <h3>BRAZA bio-optical database</h3>
+          <p>An open database of in situ bio-optical measurements for Brazilian coastal and inland waters, to which I contributed field data. <a href="https://doi.org/10.1038/s41597-025-05609-1">Read the data paper</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="teaching">
+      <h2>Teaching and mentoring</h2>
+      <p style="max-width:38em">I teach remote sensing as a way of seeing change on Earth with your own eyes. In my introductory lecture at Indiana University, students explore NASA Worldview and Google Earth Timelapse to find changes in landscapes and water bodies themselves. In the field, I have always trained new students in bio-optical measurements and remote sensing.</p>
+      <h3 class="sub">Teaching</h3>
+      <dl class="dated">
+        <dt>2026</dt><dd>Guest lecture, “Introduction to Remote Sensing: Understanding Our Planet from Space,” SPEA-E 272 Introduction to Environmental Sciences (undergraduate), Indiana University Bloomington</dd>
+        <dt>2024</dt><dd>Invited seminar, “Water Color Remote Sensing: Fundamentals and Applications for Aquatic Ecosystem Studies,” Universidad Católica de la Santísima Concepción, Chile</dd>
+        <dt>2015</dt><dd>Instructor, GIS Applications in Biology (undergraduate, one semester), Universidade do Vale do Paraíba, Brazil</dd>
+      </dl>
+      <h3 class="sub">Mentoring</h3>
+      <dl class="dated">
+        <dt>2026</dt><dd>Co-mentor of three M.S. students in data science, Indiana University (Faculty Assistance in Data Science program): Freny Reji, Sakshi Nair and Heeya Amin. All three are co-authors of the AqPV inventory paper.</dd>
+        <dt>2024</dt><dd>Co-supervisor of João Luiz Montanari, M.Sc. in Tropical Biodiversity, Federal University of Amapá, Brazil. Co-author of our 2025 paper on chlorophyll-a in the Amazon.</dd>
+        <dt>2022–2026</dt><dd>Examiner on four M.Sc. and Ph.D. thesis committees in Brazil, Chile and France</dd>
+      </dl>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <p>O’Neill School of Public and Environmental Affairs<br>Indiana University Bloomington</p>
+      <p>Email: <a href="mailto:ademato@iu.edu">ademato@iu.edu</a></p>
+      <p>I speak English, Portuguese and Spanish.</p>
+    </section>
+
+    <footer>Updated November 2026</footer>
+  </main>
+</div>
+
+<script>
+  // Highlight the section currently in view in the side navigation
+  (function () {
+    var links = document.querySelectorAll('.side nav a');
+    var map = {};
+    links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+    if (!('IntersectionObserver' in window)) return;
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          links.forEach(function (a) { a.classList.remove('active'); });
+          var a = map[e.target.id];
+          if (a) a.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    document.querySelectorAll('main section').forEach(function (s) { obs.observe(s); });
+  })();
+</script>
+</body>
+</html>
