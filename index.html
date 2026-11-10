@@ -4,7 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aline de Matos Valerio, Ph.D. | Aquatic remote sensing</title>
-<meta name="description" content="Aline de Matos Valerio is an aquatic scientist who uses satellite remote sensing and field measurements to study how lakes, reservoirs, rivers and coastal waters change. Postdoctoral Associate, Indiana University Bloomington.">
+<meta name="description" content="Aline de Matos Valerio is an aquatic remote sensing scientist who uses satellite remote sensing and field measurements to study how lakes, reservoirs, rivers and coastal waters change. Postdoctoral Associate, Indiana University Bloomington.">
+<meta property="og:title" content="Aline de Matos Valerio, Ph.D.">
+<meta property="og:description" content="Aquatic remote sensing scientist studying how lakes, reservoirs, rivers and coastal waters change.">
+<meta property="og:image" content="https://alinedmv.github.io/assets/aline-valerio.jpg">
+<meta property="og:url" content="https://alinedmv.github.io/">
+<meta property="og:type" content="profile">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -171,6 +176,8 @@
   dl.dated dt { color: var(--muted); font-variant-numeric: tabular-nums; }
   dl.dated dd { margin: 0; }
 
+  ul.courses { margin: 0 0 8px; padding-left: 1.2em; max-width: 46em; }
+  ul.courses li { margin: 4px 0; }
   .tools { display: grid; gap: 22px; max-width: 42em; }
   .tools p { margin-bottom: 0; }
 
@@ -231,9 +238,9 @@
   <main>
     <section id="about" class="intro">
       <h1>Reading the color of water from space</h1>
-      <p class="lede">I am an aquatic scientist. I combine satellite remote sensing with field measurements to understand how lakes, reservoirs, rivers and coastal waters change, and what drives that change.</p>
-      <p>I am a Postdoctoral Associate in the Environmental Change &amp; Sustainability Lab at Indiana University Bloomington, where I study how solar panels installed on water affect the lakes and reservoirs that host them. Before Indiana, I was a FAPESP postdoctoral fellow at the University of São Paulo, using water color to estimate carbon in the Amazon River, from the river to its ocean plume.</p>
-      <p>I trained as a biologist and earned my M.Sc. and Ph.D. in Remote Sensing at Brazil’s National Institute for Space Research (INPE). Much of my work starts in the field: eight campaigns on the lower Amazon River, monthly sampling at a coastal time-series station, oceanographic cruises along the Brazilian coast, and reservoir surveys. Satellite signals from water are easy to get and easy to misread, and field data is how I keep them honest.</p>
+      <p class="lede">I am an aquatic remote sensing scientist. I combine satellite observations with field measurements to understand how lakes, reservoirs, rivers and coastal waters change, and what drives that change.</p>
+      <p>As a Postdoctoral Associate in the Environmental Change &amp; Sustainability Lab at Indiana University Bloomington, I study how solar panels installed on water affect the lakes and reservoirs that host them, using a decade of satellite imagery to compare water surface temperature and a chlorophyll-a index before and after installation. Before that, as a FAPESP postdoctoral fellow at the University of São Paulo, I combined bio-optical field measurements with satellite water-color imagery to estimate dissolved organic carbon and CO₂ partial pressure in the Amazon River, from the river to its ocean plume.</p>
+      <p>After a B.S. in Biology, I earned my M.Sc. and Ph.D. in Remote Sensing at Brazil’s National Institute for Space Research (INPE). Much of my work starts in the field: eight campaigns on the lower Amazon River, monthly sampling at a coastal time-series station, oceanographic cruises along the Brazilian coast, and reservoir surveys. Satellite signals from water are easy to get, but easy to misread without understanding the optical and biological processes behind them. Field measurements are how I build that understanding.</p>
     </section>
 
     <section id="research">
@@ -247,7 +254,12 @@
         <div class="theme" style="--c: var(--w5)">
           <h3>Carbon and color in the Amazon River Continuum</h3>
           <p class="where">Lower Amazon River to the Atlantic plume, 2014 to 2024</p>
-          <p>The Amazon carries carbon from land to the atmosphere and the ocean. I use the optical properties of dissolved organic matter, measured in the field and from satellites such as Sentinel-3 OLCI and PACE OCI, to estimate dissolved carbon, CO₂ partial pressure and chlorophyll-a along the river and its plume. This work includes classifying the river’s optical water types and testing atmospheric correction methods for its turbid waters.</p>
+          <p>The Amazon carries carbon from land to the atmosphere and the ocean. I use the optical properties of dissolved organic matter, measured in the field and from satellites such as Sentinel-3 OLCI and PACE OCI, to estimate dissolved organic carbon, CO₂ partial pressure and chlorophyll-a along the river and its plume. This work includes classifying the river’s optical water types and testing atmospheric correction methods for its turbid waters.</p>
+        </div>
+        <div class="theme" style="--c: var(--w4)">
+          <h3>Water color of Amazonian fishponds</h3>
+          <p class="where">Brazilian Amazon, 2022 to present</p>
+          <p>Fish farming is expanding quickly in the Brazilian Amazon, mostly in small earthen ponds that satellites rarely resolve. As part of a FAPESP project on the carbon footprint and impacts of aquaculture expansion, we followed experimental fishponds at Embrapa Fisheries and Aquaculture through a full production cycle and showed that pond reflectance, simulated for PlanetScope satellites, can tell ponds stocked with fish from inactive ones. We also compared field, satellite and smartphone measurements of pond color, and are now using Sentinel-2 time series of a chlorophyll-a index to distinguish fishponds from other water bodies across a major fish-farming region in Rondônia. The same project also supported our study of the land use and carbon emissions of aquaculture expansion in the Amazon, published in <a href="https://doi.org/10.1126/sciadv.aec5472"><i>Science Advances</i></a>.</p>
         </div>
         <div class="theme" style="--c: var(--w3)">
           <h3>Bio-optics of reservoirs and coastal waters</h3>
@@ -320,7 +332,7 @@
       <div class="tools">
         <div>
           <h3>AqPV global inventory</h3>
-          <p>A geospatial database of 3,277 aquatic photovoltaic installations on 2,545 host water bodies in 36 countries, each mapped individually, with installation dates and attributes of the structure and its host water body. Public release with the accompanying data paper (in preparation for <i>Scientific Data</i>).</p>
+          <p>A geospatial database of 3,277 aquatic photovoltaic installations on 2,545 host water bodies in 36 countries, each mapped individually, with installation dates and attributes of the structure and its host water body. Openly available on Zenodo; the accompanying data paper is in preparation for <i>Scientific Data</i>. <a href="https://doi.org/10.5281/zenodo.23528950">Get the dataset</a>.</p>
         </div>
         <div>
           <h3>AqPV web tool</h3>
@@ -328,7 +340,7 @@
         </div>
         <div>
           <h3>BRAZA bio-optical database</h3>
-          <p>An open database of in situ bio-optical measurements for Brazilian coastal and inland waters, to which I contributed field data. <a href="https://doi.org/10.1038/s41597-025-05609-1">Read the data paper</a>.</p>
+          <p>An open database of in situ bio-optical measurements for Brazilian coastal and inland waters, to which I contributed field data. <a href="https://doi.org/10.6084/m9.figshare.28566197">Get the dataset</a> or <a href="https://doi.org/10.1038/s41597-025-05609-1">read the data paper</a>.</p>
         </div>
       </div>
     </section>
@@ -342,6 +354,14 @@
         <dt>2024</dt><dd>Invited seminar, “Water Color Remote Sensing: Fundamentals and Applications for Aquatic Ecosystem Studies,” Universidad Católica de la Santísima Concepción, Chile</dd>
         <dt>2015</dt><dd>Instructor, GIS Applications in Biology (undergraduate, one semester), Universidade do Vale do Paraíba, Brazil</dd>
       </dl>
+      <h3 class="sub">Courses I can teach</h3>
+      <ul class="courses">
+        <li>Introduction to Remote Sensing</li>
+        <li>Geographic Information Systems (GIS)</li>
+        <li>Remote Sensing of Water Quality</li>
+        <li>Climate Change Impacts on Water Bodies from Space</li>
+        <li>Environmental Data Science with Python and Google Earth Engine</li>
+      </ul>
       <h3 class="sub">Mentoring</h3>
       <dl class="dated">
         <dt>2026</dt><dd>Co-mentor of three M.S. students in data science, Indiana University (Faculty Assistance in Data Science program): Freny Reji, Sakshi Nair and Heeya Amin. All three are co-authors of the AqPV inventory paper.</dd>
